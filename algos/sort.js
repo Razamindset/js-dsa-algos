@@ -21,9 +21,40 @@ function bubbleSort(arr) {
   return arr;
 }
 
+function selectionSort(arr) {
+  // 1. Find the smallest element in the array and swap it with the first element
+  // 2. Find the next smallest element and swap it with the second element and repeat until sorted
+
+  let n = arr.length;
+
+  for (let i = 0; i < n - 1; i++) {
+    let min = i; //Assume the current index is the smallest
+
+    // 3, 4, 5, 5, 8, 6, 7, 0
+    // From the example the minimum will found at the last index. After that we will update the index of the min
+    for (let j = i + 1; j < n; j++) {
+      if (arr[j] < arr[min]) {
+        min = j; // Update the minimum to be j
+      }
+    }
+
+    // As we have found the min Index now we can check if the minimum index is i if not then we can just swap them
+    if (min !== i) {
+      [arr[i], arr[min]] = [arr[min], arr[i]];
+    }
+  }
+
+  return arr;
+}
+
+function insertionSort(arr){
+  
+}
+
 const unsortedArray = [
   2, 4, 6, 1, 7, 9, 6, 6, 8, 100, 34, 67, 7, 88, 67, 454, 55, 56, 53,
 ];
 
 console.log("Unsorted:", [...unsortedArray]); // Show original
-console.log("Sorted:", bubbleSort(unsortedArray));
+console.log("Bubble Sorted:", bubbleSort(unsortedArray));
+console.log("Selection Sorted:", selectionSort(unsortedArray));
