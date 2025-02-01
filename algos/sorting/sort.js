@@ -47,8 +47,28 @@ function selectionSort(arr) {
   return arr;
 }
 
-function insertionSort(arr){
-  
+function insertionSort(arr) {
+  // Best case (already sorted):  O(n)
+  // Average and worst case:      O(n²)
+
+  let n = arr.length;
+
+  for (let i = 1; i < n; i++) {
+    let key = arr[i];
+    let j = i - 1;
+
+
+    // Shift the larger items to the right
+    while (j >= 0 && arr[j] > key) {
+      arr[j + 1] = arr[j];
+      j--;
+    }
+
+    // Insert the key at the correct spot
+    arr[j + 1] = key;
+  }
+
+  return arr;
 }
 
 const unsortedArray = [
@@ -57,4 +77,5 @@ const unsortedArray = [
 
 console.log("Unsorted:", [...unsortedArray]); // Show original
 console.log("Bubble Sorted:", bubbleSort(unsortedArray));
-console.log("Selection Sorted:", selectionSort(unsortedArray));
+console.log("Selection Sort:", selectionSort(unsortedArray));
+console.log("Insertion sort:", insertionSort(unsortedArray));
